@@ -1,3 +1,5 @@
 # StringUtils
 
-A description of this package.
+A Swift-String extensions and common string algorithms wrapper.
+
+Still on working...
