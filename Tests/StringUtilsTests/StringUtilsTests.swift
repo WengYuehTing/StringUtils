@@ -2,10 +2,37 @@ import XCTest
 @testable import StringUtils
 
 final class StringUtilsTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(StringUtils().text, "Hello, World!")
+    
+    func testSubscriptOffset() throws {
+        let string = "hello string"
+        let character = string[1]
+        XCTAssertEqual(character, "e")
+    }
+    
+    func testSubscriptRange() throws {
+        let string = "hello string"
+        let subString = string[0..<5]
+        XCTAssertEqual(subString, "hello")
+    }
+    
+    func testSubString() throws {
+        let string = "subString test sample"
+        let subString1 = string.subString(toIndex: 3)
+        XCTAssertEqual(subString1, "sub")
+        
+        let subString2 = string.subString(toIndex: string.count)
+        XCTAssertEqual(subString2, string)
+        
+        let subString3 = string.subString(toIndex: -1)
+        XCTAssertEqual(subString3, "")
+        
+        let subString4 = string.subString(fromIndex: 7)
+        XCTAssertEqual(subString4, "ng test sample")
+        
+        let subString5 = string.subString(fromIndex: 1, toIndex: 3)
+        XCTAssertEqual(subString5, "ub")
+        
+        let subString6 = string.subString(fromRange: 1..<3)
+        XCTAssertEqual(subString6, "ub")
     }
 }
