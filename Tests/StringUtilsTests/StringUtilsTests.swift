@@ -35,4 +35,16 @@ final class StringUtilsTests: XCTestCase {
         let subString6 = string.subString(fromRange: 1..<3)
         XCTAssertEqual(subString6, "ub")
     }
+    
+    func testSplit() throws {
+        let string = "hello world"
+        let separatedString = string.split(" ")
+        XCTAssertEqual(separatedString[0], "hello")
+        
+        let string2 = "helloworld"
+        let separatedString2 = string2.split(" ")
+        let separatedString3 = string2.split("ow")
+        XCTAssertEqual(separatedString2[0], "helloworld")
+        XCTAssertEqual(separatedString3[0], "hell")
+    }
 }
