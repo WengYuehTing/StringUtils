@@ -144,3 +144,10 @@ extension String {
         return String(mString)
     }
 }
+
+extension String {
+    
+    func trim(character: CharacterSet = .whitespacesAndNewlines) -> String {
+        return self.trimmingCharacters(in: character)
+    }
+}
