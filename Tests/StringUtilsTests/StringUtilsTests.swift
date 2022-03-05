@@ -82,5 +82,9 @@ final class StringUtilsTests: XCTestCase {
         
         let string3 = "123@gmail.com"
         XCTAssertEqual(string3.trim(.decimalDigits), "@gmail.com")
+        
+        let string4 = "  https://www.google.com/resources/index.php  "
+        XCTAssertEqual(string4.rtrim(), "  https://www.google.com/resources/index.php")
+        XCTAssertEqual(string4.ltrim(), "https://www.google.com/resources/index.php  ")
     }
 }

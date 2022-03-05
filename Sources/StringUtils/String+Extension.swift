@@ -146,11 +146,23 @@ extension String {
 }
 
 
-///Returns a new string made by removing from both ends of
-///the receiver characters contained in a given character set.
+/// Returns a new string made by removing from both ends of
+/// the receiver characters contained in a given character set.
 extension String {
     
     func trim(_ cset: CharacterSet = .whitespacesAndNewlines) -> String {
         return self.trimmingCharacters(in: cset)
+    }
+    
+    func rtrim(_ cset : CharacterSet = .whitespacesAndNewlines) -> String {
+        if let range = rangeOfCharacter(from: cset, options: [.anchored, .backwards]) {
+            return String(self[..<range.lowerBound]).rtrim(cset)
+        }
+        
+        return self
+    }
+    
+    func ltrim(_ cset : CharacterSet = .whitespacesAndNewlines) -> String {
+        return String(String(reversed()).rtrim(cset).reversed())
     }
 }
