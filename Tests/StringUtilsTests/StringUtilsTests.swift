@@ -72,4 +72,15 @@ final class StringUtilsTests: XCTestCase {
         let anotherEmail = email.replaceMatches(withPattern: emailUserPattern, byTemplate: newAccount)
         XCTAssertEqual(anotherEmail, newAccount + "@gmail.com")
     }
+    
+    func testTrim() throws {
+        let string = "hello "
+        XCTAssertEqual(string.trim(), "hello")
+        
+        let string2 = "Orel"
+        XCTAssertEqual(string2.trim(.lowercaseLetters), "O")
+        
+        let string3 = "123@gmail.com"
+        XCTAssertEqual(string3.trim(.decimalDigits), "@gmail.com")
+    }
 }

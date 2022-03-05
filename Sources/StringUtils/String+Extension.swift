@@ -147,7 +147,7 @@ extension String {
 
 extension String {
     
-    func trim(character: CharacterSet = .whitespacesAndNewlines) -> String {
-        return self.trimmingCharacters(in: character)
+    func trim(_ cset: CharacterSet = .whitespacesAndNewlines) -> String {
+        return self.trimmingCharacters(in: cset)
     }
 }
