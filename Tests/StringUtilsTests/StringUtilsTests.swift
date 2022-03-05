@@ -63,5 +63,13 @@ final class StringUtilsTests: XCTestCase {
         
         let errorFormattedEmail = "WengYuehTing@gmail"
         XCTAssertEqual(errorFormattedEmail.matches(withPattern: emailPattern), false)
+        
+        let numbersOfMatches = email.numbersOfMatches(withPattern: emailPattern)
+        XCTAssertEqual(numbersOfMatches, 1)
+        
+        let emailUserPattern = "^[A-Z0-9a-z._%+-]+"
+        let newAccount = "newAccount"
+        let anotherEmail = email.replaceMatches(withPattern: emailUserPattern, byTemplate: newAccount)
+        XCTAssertEqual(anotherEmail, newAccount + "@gmail.com")
     }
 }

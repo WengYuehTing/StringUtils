@@ -62,8 +62,7 @@ extension String {
 }
 
 
-/// An immutable representation of a compiled regular expression
-/// that you apply to Unicode strings.
+/// Returns the results of regular expression matching.
 extension String {
     
     public func matches(withPattern pattern: String, options: NSRegularExpression.Options = []) -> [[String]] {
@@ -76,6 +75,14 @@ extension String {
     
     public func firstMatch(withPattern pattern: String, options: NSRegularExpression.Options = [], matchOptions: NSRegularExpression.MatchingOptions = []) -> String {
         return firstMatch(withPattern: pattern, inRange: NSRange(startIndex..., in: self), options: options, matchOptions: matchOptions)
+    }
+    
+    public func numbersOfMatches(withPattern pattern: String, options: NSRegularExpression.Options = [], matchOptions: NSRegularExpression.MatchingOptions = []) -> Int {
+        return numbersOfMatches(withPattern: pattern, inRange: NSRange(startIndex..., in: self), options: options, matchOptions: matchOptions)
+    }
+    
+    public func replaceMatches(withPattern pattern: String, byTemplate template: String, options: NSRegularExpression.Options = [], matchOptions: NSRegularExpression.MatchingOptions = []) -> String {
+        return replaceMatches(withPattern: pattern, byTemplate: template, inRange: NSRange(startIndex..., in: self), options: options, matchOptions: matchOptions)
     }
     
     public func matches(withPattern pattern: String, inRange range: NSRange, options: NSRegularExpression.Options = []) -> [[String]] {
@@ -117,5 +124,23 @@ extension String {
         
         let outRange = match.range(at: 0)
         return self[outRange.lowerBound ..< outRange.upperBound]
+    }
+    
+    public func numbersOfMatches(withPattern pattern: String, inRange range: NSRange, options: NSRegularExpression.Options = [], matchOptions: NSRegularExpression.MatchingOptions = []) -> Int {
+        guard let expression = try? NSRegularExpression(pattern: pattern, options: options) else {
+            return 0
+        }
+        
+        return expression.numberOfMatches(in: self, options: matchOptions, range: range)
+    }
+    
+    public func replaceMatches(withPattern pattern: String, byTemplate template: String, inRange range: NSRange, options: NSRegularExpression.Options = [], matchOptions: NSRegularExpression.MatchingOptions = []) -> String {
+        guard let expression = try? NSRegularExpression(pattern: pattern, options: options) else {
+            return ""
+        }
+        
+        let mString = NSMutableString(string: self)
+        expression.replaceMatches(in: mString, options: matchOptions, range: range, withTemplate: template)
+        return String(mString)
     }
 }
