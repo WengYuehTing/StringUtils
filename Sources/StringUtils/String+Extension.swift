@@ -145,6 +145,9 @@ extension String {
     }
 }
 
+
+///Returns a new string made by removing from both ends of
+///the receiver characters contained in a given character set.
 extension String {
     
     func trim(_ cset: CharacterSet = .whitespacesAndNewlines) -> String {
