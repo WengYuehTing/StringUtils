@@ -79,12 +79,23 @@ final class StringUtilsTests: XCTestCase {
         
         let string2 = "Orel"
         XCTAssertEqual(string2.trim(.lowercaseLetters), "O")
+        XCTAssertEqual(string2.rtrim(CharacterSet(charactersIn: "l")), "Ore")
+        XCTAssertEqual(string2.ltrim(.decimalDigits), "Orel")
         
         let string3 = "123@gmail.com"
         XCTAssertEqual(string3.trim(.decimalDigits), "@gmail.com")
+        XCTAssertEqual(string3.ltrim(.decimalDigits), "@gmail.com")
+        XCTAssertEqual(string3.rtrim(.decimalDigits), "123@gmail.com")
         
         let string4 = "  https://www.google.com/resources/index.php  "
         XCTAssertEqual(string4.rtrim(), "  https://www.google.com/resources/index.php")
         XCTAssertEqual(string4.ltrim(), "https://www.google.com/resources/index.php  ")
+    }
+    
+    func testContains() throws {
+        XCTAssertEqual("hello".contains(subString: "ll"), 2)
+        XCTAssertEqual("aabaabaafa".contains(subString: "aabaaf"), 3)
+        XCTAssertEqual("invalidInput".contains(subString: ""), 0)
+        XCTAssertNil("Notfound".contains(subString: "find"))
     }
 }

@@ -150,11 +150,11 @@ extension String {
 /// the receiver characters contained in a given character set.
 extension String {
     
-    func trim(_ cset: CharacterSet = .whitespacesAndNewlines) -> String {
+    public func trim(_ cset: CharacterSet = .whitespacesAndNewlines) -> String {
         return self.trimmingCharacters(in: cset)
     }
     
-    func rtrim(_ cset : CharacterSet = .whitespacesAndNewlines) -> String {
+    public func rtrim(_ cset : CharacterSet = .whitespacesAndNewlines) -> String {
         if let range = rangeOfCharacter(from: cset, options: [.anchored, .backwards]) {
             return String(self[..<range.lowerBound]).rtrim(cset)
         }
@@ -162,7 +162,20 @@ extension String {
         return self
     }
     
-    func ltrim(_ cset : CharacterSet = .whitespacesAndNewlines) -> String {
-        return String(String(reversed()).rtrim(cset).reversed())
+    public func ltrim(_ cset : CharacterSet = .whitespacesAndNewlines) -> String {
+        for (i, c) in self.enumerated() {
+            if !cset.isSuperset(of: CharacterSet(charactersIn: String(c))) {
+                return self.subString(fromIndex: i)
+            }
+        }
+        
+        return self
+    }
+}
+
+extension String {
+    
+    public func contains(subString: String) -> Int? {
+        return kmp(self, p: subString)
     }
 }
