@@ -9,8 +9,6 @@ import Foundation
 
 internal func kmp(_ s: String, p: String) -> Int? {
     let n = s.count, m = p.count
-    
-    // Returns 0 while the substring length is zero
     guard m > 0 else {
         return 0
     }

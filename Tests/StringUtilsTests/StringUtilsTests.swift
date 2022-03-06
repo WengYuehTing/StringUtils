@@ -93,9 +93,9 @@ final class StringUtilsTests: XCTestCase {
     }
     
     func testContains() throws {
-        XCTAssertEqual("hello".contains(subString: "ll"), 2)
-        XCTAssertEqual("aabaabaafa".contains(subString: "aabaaf"), 3)
-        XCTAssertEqual("invalidInput".contains(subString: ""), 0)
-        XCTAssertNil("Notfound".contains(subString: "find"))
+        XCTAssertEqual("hello".contains("ll"), 2)
+        XCTAssertEqual("aabaabaafa".contains("aabaaf"), 3)
+        XCTAssertEqual("invalidInput".contains(""), 0)
+        XCTAssertNil("Notfound".contains("find"))
     }
 }

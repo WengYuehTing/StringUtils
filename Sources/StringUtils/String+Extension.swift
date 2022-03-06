@@ -175,7 +175,7 @@ extension String {
 
 extension String {
     
-    public func contains(subString: String) -> Int? {
+    public func contains(_ subString: String) -> Int? {
         return kmp(self, p: subString)
     }
 }
