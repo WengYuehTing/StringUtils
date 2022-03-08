@@ -202,6 +202,16 @@ extension String {
     }
 }
 
+
+extension String {
+    
+    func reversed() -> String {
+        let reversedString: [Character] = self.reversed()
+        return String(reversedString)
+    }
+}
+
+
 extension String {
     
     public func firstUniqChar() -> Character? {
@@ -216,3 +226,5 @@ extension String {
         return isPalindromeImpl(self)
     }
 }
+
+

@@ -105,6 +105,10 @@ final class StringUtilsTests: XCTestCase {
         XCTAssertEqual("  hello".replace(inRange: 0..<2, with: "Say"), "Sayhello")
     }
     
+    func testReverse() throws {
+        XCTAssertEqual("hello".reversed(), "olleh")
+    }
+    
     func testFirstUniqChar() throws {
         XCTAssertEqual("hello".firstUniqChar(), "h")
         XCTAssertEqual("abaccdeff".firstUniqChar(), "b")
