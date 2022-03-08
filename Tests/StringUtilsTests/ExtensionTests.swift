@@ -31,9 +31,6 @@ final class ExtensionTests: XCTestCase {
         
         let subString5 = string.subString(fromIndex: 1, toIndex: 3)
         XCTAssertEqual(subString5, "ub")
-        
-        let subString6 = string.subString(fromRange: 1..<3)
-        XCTAssertEqual(subString6, "ub")
     }
     
     func testSplit() throws {

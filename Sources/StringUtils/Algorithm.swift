@@ -9,9 +9,25 @@ import Foundation
 
 extension String {
     
+    /// Returns the index of first occurrence of substring in recevier.
+    ///
+    /// if substring is empty, return 0.
+    /// if substring is not part of receiver, return nil.
+    ///
+    /// - Parameter substring: The string trying to consider whether it
+    ///   is a subset of receiver.
+    ///
+    /// - Important: We can use `KMP (Knuth Morris Pratt)` algorithm to solve
+    ///   this issue. The core idea of the KMP is: whenever we detect a mismatch
+    ///   (after some matches), we already know some of the characters in the
+    ///   text of the next window. We take advantage of this information to avoid
+    ///   matching the characters that we know will anyway match.
+    ///
+    /// Complexity: O (m + n), where m is the count of recevier, n is the count
+    /// of substring.
     public func contains(_ substring: String) -> Int? {
         let n = self.count, m = substring.count
-        guard m > 0 else {
+        guard !substring.isEmpty else {
             return 0
         }
         
@@ -43,6 +59,9 @@ extension String {
         return nil
     }
     
+    /// Returns the first character that is not repeated in the receiver.
+    ///
+    /// if all characters are repeated, returns nil.
     public func firstUniqChar() -> Character? {
         var table = Array(repeating: 0, count: 256) // ascii
         for c in self {
@@ -57,6 +76,9 @@ extension String {
         return nil
     }
     
+    
+    /// Returns the count of the last real-world word in the receiver,
+    /// which should be separated by spaces.
     public func lengthOfLastWord() -> Int {
         var result = ""
         var found = false
@@ -76,6 +98,7 @@ extension String {
         return result.count
     }
     
+    /// Returns true if the receiver equals to its reversed order.
     public func isPalindrome() -> Bool {
         let carr = Array(self.lowercased().filter { $0.isLetter || $0.isNumber })
         var front = 0
