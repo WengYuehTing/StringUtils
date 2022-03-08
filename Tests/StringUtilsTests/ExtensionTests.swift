@@ -1,7 +1,7 @@
 import XCTest
 @testable import StringUtils
 
-final class StringUtilsTests: XCTestCase {
+final class ExtensionTests: XCTestCase {
     
     func testSubscriptOffset() throws {
         let string = "hello string"
@@ -48,31 +48,6 @@ final class StringUtilsTests: XCTestCase {
         XCTAssertEqual(separatedString3[0], "hell")
     }
     
-    func testMatches() throws {
-        let string = "CASEinsensitive"
-        XCTAssertEqual(string.matches(withPattern: "[a-z]+", options: [.caseInsensitive]), true)
-        
-        let email = "WengYuehTing@gmail.com"
-        let emailPattern = "([A-Z0-9a-z._%+-]+)@([A-Za-z0-9.-]+\\.[A-Za-z]{2,64})"
-        let matchedGroup: [[String]] = email.matches(withPattern: emailPattern)
-        XCTAssertEqual(matchedGroup[0][1], "WengYuehTing")
-        XCTAssertEqual(matchedGroup[0][2], "gmail.com")
-        
-        let firstMatch = email.firstMatch(withPattern: "([A-Z0-9a-z._%+-]+)@([A-Za-z0-9.-]+\\.[A-Za-z]{2,64})")
-        XCTAssertEqual(firstMatch, matchedGroup[0][0])
-        
-        let errorFormattedEmail = "WengYuehTing@gmail"
-        XCTAssertEqual(errorFormattedEmail.matches(withPattern: emailPattern), false)
-        
-        let numbersOfMatches = email.numbersOfMatches(withPattern: emailPattern)
-        XCTAssertEqual(numbersOfMatches, 1)
-        
-        let emailUserPattern = "^[A-Z0-9a-z._%+-]+"
-        let newAccount = "newAccount"
-        let anotherEmail = email.replaceMatches(withPattern: emailUserPattern, byTemplate: newAccount)
-        XCTAssertEqual(anotherEmail, newAccount + "@gmail.com")
-    }
-    
     func testTrim() throws {
         let string = "hello "
         XCTAssertEqual(string.trim(), "hello")
@@ -92,13 +67,6 @@ final class StringUtilsTests: XCTestCase {
         XCTAssertEqual(string4.ltrim(), "https://www.google.com/resources/index.php  ")
     }
     
-    func testContains() throws {
-        XCTAssertEqual("hello".contains("ll"), 2)
-        XCTAssertEqual("aabaabaafa".contains("aabaaf"), 3)
-        XCTAssertEqual("invalidInput".contains(""), 0)
-        XCTAssertNil("Notfound".contains("find"))
-    }
-    
     func testReplace() throws {
         XCTAssertEqual("hello".replace(ofTarget: "hello", with: "world"), "world")
         XCTAssertEqual("hello".replace(ofTarget: "", with: "world"), "hello")
@@ -107,22 +75,5 @@ final class StringUtilsTests: XCTestCase {
     
     func testReverse() throws {
         XCTAssertEqual("hello".reversed(), "olleh")
-    }
-    
-    func testFirstUniqChar() throws {
-        XCTAssertEqual("hello".firstUniqChar(), "h")
-        XCTAssertEqual("abaccdeff".firstUniqChar(), "b")
-        XCTAssertNil("aabbcc".firstUniqChar())
-    }
-    
-    func testLengthOfLastWord() throws {
-        XCTAssertEqual("hello World".lengthOfLastWord(), 5)
-        XCTAssertEqual("   fly me   to   the moon  ".lengthOfLastWord(), 4)
-        XCTAssertEqual("luffy is still joyboy".lengthOfLastWord(), 6)
-    }
-    
-    func testIsPalindrome() throws {
-        XCTAssertTrue("A man, a plan, a canal: Panama".isPalindrome())
-        XCTAssertFalse("race a car".isPalindrome())
     }
 }
