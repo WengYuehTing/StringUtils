@@ -26,6 +26,18 @@ extension String {
 }
 
 
+extension String {
+    
+    public func contains(_ subString: String) -> Int? {
+        return kmp(self, p: subString)
+    }
+    
+    public func contains(_ characters: [Character]) -> Int? {
+        return kmp(self, p: String(characters))
+    }
+}
+
+
 /// Returns a part of the string with the given begin and
 /// end indexes or range.
 extension String {
@@ -165,7 +177,7 @@ extension String {
     public func ltrim(_ cset : CharacterSet = .whitespacesAndNewlines) -> String {
         for (i, c) in self.enumerated() {
             if !cset.isSuperset(of: CharacterSet(charactersIn: String(c))) {
-                return self.subString(fromIndex: i)
+                return self[i ..< count]
             }
         }
         
@@ -175,7 +187,18 @@ extension String {
 
 extension String {
     
-    public func contains(_ subString: String) -> Int? {
-        return kmp(self, p: subString)
+    func replace(ofTarget target: String, with replacement: String) -> String {
+        return replacingOccurrences(of: target, with: replacement)
+    }
+    
+    func replace(inRange range: Range<String.Index>, with replacement: String) -> String {
+        return replacingCharacters(in: range, with: replacement)
+    }
+    
+    func replace(inRange range: Range<Int>, with replacement: String) -> String {
+        let lowerBound = index(startIndex, offsetBy: range.lowerBound)
+        let upperbound = index(startIndex, offsetBy: range.upperBound)
+        return replacingCharacters(in: Range<String.Index>(uncheckedBounds: (lowerBound, upperbound)), with: replacement)
     }
 }
+

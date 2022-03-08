@@ -98,4 +98,10 @@ final class StringUtilsTests: XCTestCase {
         XCTAssertEqual("invalidInput".contains(""), 0)
         XCTAssertNil("Notfound".contains("find"))
     }
+    
+    func testReplace() throws {
+        XCTAssertEqual("hello".replace(ofTarget: "hello", with: "world"), "world")
+        XCTAssertEqual("hello".replace(ofTarget: "", with: "world"), "hello")
+        XCTAssertEqual("  hello".replace(inRange: 0..<2, with: "Say"), "Sayhello")
+    }
 }
