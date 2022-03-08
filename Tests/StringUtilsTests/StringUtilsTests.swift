@@ -110,4 +110,15 @@ final class StringUtilsTests: XCTestCase {
         XCTAssertEqual("abaccdeff".firstUniqChar(), "b")
         XCTAssertNil("aabbcc".firstUniqChar())
     }
+    
+    func testLengthOfLastWord() throws {
+        XCTAssertEqual("hello World".lengthOfLastWord(), 5)
+        XCTAssertEqual("   fly me   to   the moon  ".lengthOfLastWord(), 4)
+        XCTAssertEqual("luffy is still joyboy".lengthOfLastWord(), 6)
+    }
+    
+    func testIsPalindrome() throws {
+        XCTAssertTrue("A man, a plan, a canal: Panama".isPalindrome())
+        XCTAssertFalse("race a car".isPalindrome())
+    }
 }

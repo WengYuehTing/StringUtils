@@ -41,7 +41,8 @@ internal func kmp(_ s: String, p: String) -> Int? {
     return nil
 }
 
-internal func firstUniqCharImpl(s: String) -> Character? {
+
+internal func firstUniqCharImpl(_ s: String) -> Character? {
     var table = Array(repeating: 0, count: 256) // ascii
     for c in s {
         let ascii = Int(c.asciiValue!)
@@ -53,4 +54,41 @@ internal func firstUniqCharImpl(s: String) -> Character? {
     }
     
     return nil
+}
+
+
+internal func lengthOfLastWordImpl(_ s: String) -> Int {
+    var result = ""
+    var found = false
+    for c in s {
+        if c == " " {
+            found = true
+        } else {
+            if found {
+                result = ""
+                found = false
+            }
+
+            result.append(c)
+        }
+    }
+
+    return result.count
+}
+
+
+internal func isPalindrome(_ s: String) -> Bool {
+    let carr = Array(s.lowercased().filter { $0.isLetter || $0.isNumber })
+    var front = 0
+    var end = carr.count - 1
+    while front < end {
+        if carr[front] != carr[end] {
+            return false
+        }
+
+        front += 1
+        end -= 1
+    }
+
+    return true
 }

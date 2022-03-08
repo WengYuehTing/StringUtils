@@ -205,6 +205,14 @@ extension String {
 extension String {
     
     public func firstUniqChar() -> Character? {
-        return firstUniqCharImpl(s: self)
+        return firstUniqCharImpl(self)
+    }
+    
+    public func lengthOfLastWord() -> Int {
+        return lengthOfLastWordImpl(self)
+    }
+    
+    public func isPalindrome() -> Bool {
+        return isPalindromeImpl(self)
     }
 }
