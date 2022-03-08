@@ -14,8 +14,7 @@ extension String {
     /// if substring is empty, return 0.
     /// if substring is not part of receiver, return nil.
     ///
-    /// - Parameter substring: The string trying to consider whether it
-    ///   is a subset of receiver.
+    /// - Parameter substring: The string which is possibly a part of the receiver.
     ///
     /// - Important: We can use `KMP (Knuth Morris Pratt)` algorithm to solve
     ///   this issue. The core idea of the KMP is: whenever we detect a mismatch
