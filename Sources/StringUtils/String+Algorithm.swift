@@ -77,7 +77,7 @@ internal func lengthOfLastWordImpl(_ s: String) -> Int {
 }
 
 
-internal func isPalindrome(_ s: String) -> Bool {
+internal func isPalindromeImpl(_ s: String) -> Bool {
     let carr = Array(s.lowercased().filter { $0.isLetter || $0.isNumber })
     var front = 0
     var end = carr.count - 1
