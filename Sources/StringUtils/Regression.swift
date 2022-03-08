@@ -7,16 +7,15 @@
 
 import Foundation
 
-/// Returns the results of regular expression matching.
 extension String {
     
     /// Returns an array containing all the matches of the regular expression in the string.
     ///
     /// - Parameters:
-    ///   - pattern: the string to search.
-    ///   - range: the specified range of string to search.
-    ///   - options: the regular expression options that are applied to the expression during matching
-    ///   - matchingOptions: the matching options to use.
+    ///   - pattern: The string to search.
+    ///   - range: The specified range of string to search.
+    ///   - options: The regular expression options that are applied to the expression during matching
+    ///   - matchingOptions: The matching options to use.
     public func matches(withPattern pattern: String, inRange range: NSRange, options: NSRegularExpression.Options = [], matchingOptions: NSRegularExpression.MatchingOptions = []) -> [[String]] {
         guard let expression = try? NSRegularExpression(pattern: pattern, options: options) else {
             return []
@@ -38,10 +37,10 @@ extension String {
     /// Returns true if there are any matches of the regular expression in the string.
     ///
     /// - Parameters:
-    ///   - pattern: the string to search.
-    ///   - range: the specified range of string to search.
-    ///   - options: the regular expression options that are applied to the expression during matching
-    ///   - matchingOptions: the matching options to use.
+    ///   - pattern: The string to search.
+    ///   - range: The specified range of string to search.
+    ///   - options: The regular expression options that are applied to the expression during matching
+    ///   - matchingOptions: The matching options to use.
     public func matches(withPattern pattern: String, inRange range: NSRange, options: NSRegularExpression.Options = [], matchingOptions: NSRegularExpression.MatchingOptions = [] ) -> Bool {
         guard let expression = try? NSRegularExpression(pattern: pattern, options: options) else {
             return false
@@ -54,10 +53,10 @@ extension String {
     /// Returns the first match of the regular expression in the string.
     ///
     /// - Parameters:
-    ///   - pattern: the string to search.
-    ///   - range: the specified range of string to search.
-    ///   - options: the regular expression options that are applied to the expression during matching
-    ///   - matchingOptions: the matching options to use.
+    ///   - pattern: The string to search.
+    ///   - range: The specified range of string to search.
+    ///   - options: The regular expression options that are applied to the expression during matching
+    ///   - matchingOptions: The matching options to use.
     public func firstMatch(withPattern pattern: String, inRange range: NSRange, options: NSRegularExpression.Options = [], matchOptions: NSRegularExpression.MatchingOptions = []) -> String {
         guard let expression = try? NSRegularExpression(pattern: pattern, options: options),
               let match = expression.firstMatch(in: self, options: matchOptions, range: range)else {
@@ -75,10 +74,10 @@ extension String {
     /// Returns an interget indicating the numbers of matches of the regular expression in the string.
     ///
     /// - Parameters:
-    ///   - pattern: the string to search.
-    ///   - range: the specified range of string to search.
-    ///   - options: the regular expression options that are applied to the expression during matching
-    ///   - matchingOptions: the matching options to use.
+    ///   - pattern: The string to search.
+    ///   - range: The specified range of string to search.
+    ///   - options: The regular expression options that are applied to the expression during matching
+    ///   - matchingOptions: The matching options to use.
     public func numbersOfMatches(withPattern pattern: String, inRange range: NSRange, options: NSRegularExpression.Options = [], matchOptions: NSRegularExpression.MatchingOptions = []) -> Int {
         guard let expression = try? NSRegularExpression(pattern: pattern, options: options) else {
             return 0
@@ -90,10 +89,10 @@ extension String {
     /// Returns a new string which replaces regular expression matches within the mutable string using the template string.
     ///
     /// - Parameters:
-    ///   - pattern: the string to search.
-    ///   - range: the specified range of string to search.
-    ///   - options: the regular expression options that are applied to the expression during matching
-    ///   - matchingOptions: the matching options to use.
+    ///   - pattern: The string to search.
+    ///   - range: The specified range of string to search.
+    ///   - options: The regular expression options that are applied to the expression during matching
+    ///   - matchingOptions: The matching options to use.
     public func replaceMatches(withPattern pattern: String, byTemplate template: String, inRange range: NSRange, options: NSRegularExpression.Options = [], matchOptions: NSRegularExpression.MatchingOptions = []) -> String {
         guard let expression = try? NSRegularExpression(pattern: pattern, options: options) else {
             return ""
@@ -107,9 +106,9 @@ extension String {
     /// Returns an array containing all the matches of the regular expression in the string.
     ///
     /// - Parameters:
-    ///   - pattern: the string to search.
-    ///   - options: the regular expression options that are applied to the expression during matching
-    ///   - matchingOptions: the matching options to use.
+    ///   - pattern: The string to search.
+    ///   - options: The regular expression options that are applied to the expression during matching
+    ///   - matchingOptions: The matching options to use.
     public func matches(withPattern pattern: String, options: NSRegularExpression.Options = [], matchingOptions: NSRegularExpression.MatchingOptions = []) -> [[String]] {
         return matches(withPattern: pattern, inRange: NSRange(startIndex..., in: self), options: options, matchingOptions: matchingOptions)
     }
@@ -117,9 +116,9 @@ extension String {
     /// Returns true if there are any matches of the regular expression in the string.
     ///
     /// - Parameters:
-    ///   - pattern: the string to search.
-    ///   - options: the regular expression options that are applied to the expression during matching
-    ///   - matchingOptions: the matching options to use.
+    ///   - pattern: The string to search.
+    ///   - options: The regular expression options that are applied to the expression during matching
+    ///   - matchingOptions: The matching options to use.
     public func matches(withPattern pattern: String, options: NSRegularExpression.Options = [], matchingOptions: NSRegularExpression.MatchingOptions = []) -> Bool {
         return matches(withPattern: pattern, inRange: NSRange(startIndex..., in: self), options: options, matchingOptions: matchingOptions)
     }
@@ -127,9 +126,9 @@ extension String {
     /// Returns the first match of the regular expression in the string.
     ///
     /// - Parameters:
-    ///   - pattern: the string to search.
-    ///   - options: the regular expression options that are applied to the expression during matching
-    ///   - matchingOptions: the matching options to use.
+    ///   - pattern: The string to search.
+    ///   - options: The regular expression options that are applied to the expression during matching
+    ///   - matchingOptions: The matching options to use.
     public func firstMatch(withPattern pattern: String, options: NSRegularExpression.Options = [], matchOptions: NSRegularExpression.MatchingOptions = []) -> String {
         return firstMatch(withPattern: pattern, inRange: NSRange(startIndex..., in: self), options: options, matchOptions: matchOptions)
     }
@@ -137,9 +136,9 @@ extension String {
     /// Returns an interget indicating the numbers of matches of the regular expression in the string.
     ///
     /// - Parameters:
-    ///   - pattern: the string to search.
-    ///   - options: the regular expression options that are applied to the expression during matching
-    ///   - matchingOptions: the matching options to use.
+    ///   - pattern: The string to search.
+    ///   - options: The regular expression options that are applied to the expression during matching
+    ///   - matchingOptions: The matching options to use.
     public func numbersOfMatches(withPattern pattern: String, options: NSRegularExpression.Options = [], matchOptions: NSRegularExpression.MatchingOptions = []) -> Int {
         return numbersOfMatches(withPattern: pattern, inRange: NSRange(startIndex..., in: self), options: options, matchOptions: matchOptions)
     }
@@ -147,9 +146,9 @@ extension String {
     /// Returns a new string which replaces regular expression matches within the mutable string using the template string.
     ///
     /// - Parameters:
-    ///   - pattern: the string to search.
-    ///   - options: the regular expression options that are applied to the expression during matching
-    ///   - matchingOptions: the matching options to use.
+    ///   - pattern: The string to search.
+    ///   - options: The regular expression options that are applied to the expression during matching
+    ///   - matchingOptions: The matching options to use.
     public func replaceMatches(withPattern pattern: String, byTemplate template: String, options: NSRegularExpression.Options = [], matchOptions: NSRegularExpression.MatchingOptions = []) -> String {
         return replaceMatches(withPattern: pattern, byTemplate: template, inRange: NSRange(startIndex..., in: self), options: options, matchOptions: matchOptions)
     }

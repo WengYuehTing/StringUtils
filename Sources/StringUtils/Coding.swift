@@ -32,7 +32,7 @@ extension String {
     ///
     /// If encoding fails, return self.
     ///
-    /// - Parameter cset: the character set to allow in encoding.
+    /// - Parameter cset: The character set to allow in encoding.
     ///
     /// - Important: This method easily leads to wrong results in encoding some special symbols,
     ///   make sure to test the default character set and modify it if needs.
