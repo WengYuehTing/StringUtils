@@ -2,9 +2,9 @@
 
 Until now with the release of Swift 5.5 there are still less of intuitive APIs for native Swift String type,
 developers have to write the code like ``` string[string.index(string.startIndex, offsetBy: n)] ``` to access the n-th character in a string,
-which is less readable and nature. Also, the performance is a little bit confused and cumbersome while handling with ``` String.Index ```, 
+which is less readable and nature. Also, the performance is a little bit confused and cumbersome while handling with ``` String.Index ``` for interpolation, 
 as it seems to convert to [Character] and use subscript to retrieve element can always lead to performance benefits. 
-This package wraps some common string usages in one line, such as: 
+This package wraps some common string usages, such as: 
 
 ```
 let string = " hello world "
