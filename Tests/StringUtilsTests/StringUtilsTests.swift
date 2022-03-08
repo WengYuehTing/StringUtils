@@ -104,4 +104,10 @@ final class StringUtilsTests: XCTestCase {
         XCTAssertEqual("hello".replace(ofTarget: "", with: "world"), "hello")
         XCTAssertEqual("  hello".replace(inRange: 0..<2, with: "Say"), "Sayhello")
     }
+    
+    func testFirstUniqChar() throws {
+        XCTAssertEqual("hello".firstUniqChar(), "h")
+        XCTAssertEqual("abaccdeff".firstUniqChar(), "b")
+        XCTAssertNil("aabbcc".firstUniqChar())
+    }
 }

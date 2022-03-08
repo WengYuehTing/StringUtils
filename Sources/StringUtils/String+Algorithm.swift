@@ -40,3 +40,17 @@ internal func kmp(_ s: String, p: String) -> Int? {
     
     return nil
 }
+
+internal func firstUniqCharImpl(s: String) -> Character? {
+    var table = Array(repeating: 0, count: 256) // ascii
+    for c in s {
+        let ascii = Int(c.asciiValue!)
+        table[ascii] += 1
+    }
+    
+    for c in s where table[Int(c.asciiValue!)] == 1 {
+        return c
+    }
+    
+    return nil
+}

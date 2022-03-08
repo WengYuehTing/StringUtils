@@ -187,18 +187,24 @@ extension String {
 
 extension String {
     
-    func replace(ofTarget target: String, with replacement: String) -> String {
+    public func replace(ofTarget target: String, with replacement: String) -> String {
         return replacingOccurrences(of: target, with: replacement)
     }
     
-    func replace(inRange range: Range<String.Index>, with replacement: String) -> String {
+    public func replace(inRange range: Range<String.Index>, with replacement: String) -> String {
         return replacingCharacters(in: range, with: replacement)
     }
     
-    func replace(inRange range: Range<Int>, with replacement: String) -> String {
+    public func replace(inRange range: Range<Int>, with replacement: String) -> String {
         let lowerBound = index(startIndex, offsetBy: range.lowerBound)
         let upperbound = index(startIndex, offsetBy: range.upperBound)
         return replacingCharacters(in: Range<String.Index>(uncheckedBounds: (lowerBound, upperbound)), with: replacement)
     }
 }
 
+extension String {
+    
+    public func firstUniqChar() -> Character? {
+        return firstUniqCharImpl(s: self)
+    }
+}
