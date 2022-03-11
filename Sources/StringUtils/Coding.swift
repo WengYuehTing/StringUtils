@@ -34,8 +34,7 @@ extension String {
     ///
     /// - Parameter cset: The character set to allow in encoding.
     ///
-    /// - Important: This method easily leads to wrong results in encoding some special symbols,
-    ///   make sure to test the default character set and modify it if needs.
+    /// - Important: Make sure test or modify the character set to meet your needs.
     public func urlEncoded(_ cset: CharacterSet = .alphanumerics.union(.init(charactersIn: "-._~"))) -> String {
         return addingPercentEncoding(withAllowedCharacters: cset) ?? self
     }

@@ -41,7 +41,7 @@ extension String {
     ///   - range: The specified range of string to search.
     ///   - options: The regular expression options that are applied to the expression during matching
     ///   - matchingOptions: The matching options to use.
-    public func matches(withPattern pattern: String, inRange range: NSRange, options: NSRegularExpression.Options = [], matchingOptions: NSRegularExpression.MatchingOptions = [] ) -> Bool {
+    public func hasMatches(withPattern pattern: String, inRange range: NSRange, options: NSRegularExpression.Options = [], matchingOptions: NSRegularExpression.MatchingOptions = [] ) -> Bool {
         guard let expression = try? NSRegularExpression(pattern: pattern, options: options) else {
             return false
         }
@@ -119,8 +119,8 @@ extension String {
     ///   - pattern: The string to search.
     ///   - options: The regular expression options that are applied to the expression during matching
     ///   - matchingOptions: The matching options to use.
-    public func matches(withPattern pattern: String, options: NSRegularExpression.Options = [], matchingOptions: NSRegularExpression.MatchingOptions = []) -> Bool {
-        return matches(withPattern: pattern, inRange: NSRange(startIndex..., in: self), options: options, matchingOptions: matchingOptions)
+    public func hasMatches(withPattern pattern: String, options: NSRegularExpression.Options = [], matchingOptions: NSRegularExpression.MatchingOptions = []) -> Bool {
+        return hasMatches(withPattern: pattern, inRange: NSRange(startIndex..., in: self), options: options, matchingOptions: matchingOptions)
     }
     
     /// Returns the first match of the regular expression in the string.

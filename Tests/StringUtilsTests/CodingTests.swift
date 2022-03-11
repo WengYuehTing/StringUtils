@@ -17,9 +17,9 @@ final class CodingTests: XCTestCase {
         XCTAssertEqual(googleUrl.urlDecoded(), google)
         
         let stackoverflow = "https://stackoverflow.com/questions/24551816/swift-encode-url/39767927#39767927"
-        let strckoverflowUrl = stackoverflow.urlEncoded()
-        XCTAssertEqual(strckoverflowUrl, "https%3A%2F%2Fstackoverflow.com%2Fquestions%2F24551816%2Fswift-encode-url%2F39767927%2339767927")
-        XCTAssertEqual(strckoverflowUrl.urlDecoded(), stackoverflow)
+        let stackoverflowUrl = stackoverflow.urlEncoded()
+        XCTAssertEqual(stackoverflowUrl, "https%3A%2F%2Fstackoverflow.com%2Fquestions%2F24551816%2Fswift-encode-url%2F39767927%2339767927")
+        XCTAssertEqual(stackoverflowUrl.urlDecoded(), stackoverflow)
     }
     
     func testMD5() throws {
