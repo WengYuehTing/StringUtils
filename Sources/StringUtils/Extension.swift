@@ -30,6 +30,57 @@ extension String {
 }
 
 extension String {
+    
+    /// Inserts a new character at the specified position.
+    ///
+    /// - Parameters:
+    ///   - character: The new character to insert into the string.
+    ///   - i: A valid index of the string. If `i` is equal to the string's end
+    ///     index, this methods appends `character` to the string.
+    ///
+    /// - Complexity: O(*n*), where *n* is the length of the string.
+    public mutating func insert(_ character: Character, at i: Int) {
+        self.insert(character, at: index(startIndex, offsetBy: i))
+    }
+    
+    /// Inserts a collection of characters at the specified position.
+    ///
+    /// - Parameters:
+    ///   - string: A collection of `String` elements to insert into the string.
+    ///   - i: A valid index of the string. If `i` is equal to the string's end
+    ///     index, this methods appends the contents of `string` to the
+    ///     string.
+    ///
+    /// - Complexity: O(*n*), where *n* is the combined length of receiver and `string`.
+    public mutating func insert(_ string: String, at i: Int) {
+        self.insert(contentsOf: string, at: index(startIndex, offsetBy: i))
+    }
+}
+
+extension String {
+    
+    /// Removes and returns the character at the specified position.
+    ///
+    /// - Parameter i: The position of the character to remove. `i` must be a
+    ///   valid index of the string that is not equal to the string's end index.
+    /// - Returns: The character that was removed.
+    public mutating func remove(at i: Int) -> Character {
+        return self.remove(at: index(startIndex, offsetBy: i))
+    }
+    
+    /// Removes the characters in the given range.
+    ///
+    /// - Parameter range: The range of the elements to remove. The upper and
+    ///   lower bounds of `bounds` must be valid indices of the string and not
+    ///   equal to the string's end index.
+    public mutating func remove(range: Range<Int>) {
+        let lowerBound = index(startIndex, offsetBy: range.lowerBound)
+        let upperbound = index(startIndex, offsetBy: range.upperBound)
+        self.removeSubrange(Range<String.Index>(uncheckedBounds: (lowerBound, upperbound)))
+    }
+}
+
+extension String {
 
     /// Returns a substring from the receiver.
     ///

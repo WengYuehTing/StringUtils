@@ -15,6 +15,24 @@ final class ExtensionTests: XCTestCase {
         XCTAssertEqual(subString, "hello")
     }
     
+    func testInsert() throws {
+        var string = "hello world"
+        string.insert("h", at: 0)
+        XCTAssertEqual(string, "hhello world")
+        
+        string.insert(" my", at: 6)
+        XCTAssertEqual(string, "hhello my world")
+    }
+    
+    func testRemove() throws {
+        var string = "string to delete"
+        string.remove(at: 0)
+        XCTAssertEqual(string, "tring to delete")
+        
+        string.remove(range: 0..<6)
+        XCTAssertEqual(string, "to delete")
+    }
+    
     func testSubString() throws {
         let string = "subString test sample"
         let subString1 = string.subString(toIndex: 3)
