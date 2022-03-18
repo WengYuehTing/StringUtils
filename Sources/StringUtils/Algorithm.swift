@@ -30,13 +30,15 @@ extension String {
             return 0
         }
         
+        let sarr = Array(self)
+        let carr = Array(substring)
         var next = Array(repeating: 0, count: m)
         var j = 0
         for i in 1 ..< m {
-            while j > 0 && substring[i] != substring[j] {
+            while j > 0 && carr[i] != carr[j] {
                 j = next[j-1]
             }
-            if substring[i] == substring[j] {
+            if carr[i] == carr[j] {
                 j += 1
             }
             next[i] = j
@@ -44,10 +46,10 @@ extension String {
         
         j = 0
         for i in 0 ..< n {
-            while j > 0 && self[i] != substring[j] {
+            while j > 0 && sarr[i] != carr[j] {
                 j = next[j-1]
             }
-            if self[i] == substring[j] {
+            if sarr[i] == carr[j] {
                 j += 1
             }
             if j == m {

@@ -4,6 +4,7 @@ import XCTest
 final class AlgorithmTests: XCTestCase {
     
     func testContains() throws {
+        XCTAssertEqual(" hello world ".contains("world"), 7)
         XCTAssertEqual("hello".contains("ll"), 2)
         XCTAssertEqual("aabaabaafa".contains("aabaaf"), 3)
         XCTAssertEqual("invalidInput".contains(""), 0)
