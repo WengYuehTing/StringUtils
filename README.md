@@ -2,7 +2,7 @@
 
 In the release of Swift 5.5 there is still a lack of intuitive APIs for native type ```String```. To simply access n-th character of a string, developers have to write the code like ``` string[string.index(string.startIndex, offsetBy: n)] ``` which is less readable and maintainable. Also, the performance of multiple string interpolations using ``` String.Index ``` is a little bit confused, as it seems to convert to [Character] could always have performance benefits. Thus, this package aims to provide intuitive APIs for type ```String``` which get rids of ``` String.Index ``` and uses ``` Int ``` and ``` Range<Int> ``` to manipulate a string, such as: 
 
-```
+```swift
 let string = " hello world "
 string[1]                 \\ "h"
 string[1..<3]             \\ "he"
@@ -14,7 +14,7 @@ string.ltrim()            \\ "hello world "
 string.split(" ")         \\ ["hello", "world"]
 string.contains("world")  \\ 7
 string.base64Encoded()    \\ IGhlbGxvIFdvcmxkIA==
-string.urlEncoded()       \\ %20hello%20world%20
+string.urlEncoded()       \\ "%20hello%20world%20"
 string.md5()              \\ c9708cb9a6b8d820eda83547a218f384
 
 let email = "username@gmail.com"
